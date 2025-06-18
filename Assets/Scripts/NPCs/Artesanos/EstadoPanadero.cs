@@ -8,6 +8,7 @@ public class EstadoPanadero : IOficioState
 	// Cacheo de referencias a los ítems
 	private ItemData madera, harina, masa, pan;
 
+	// Constructor que recibe el NPC y cachea las referencias a los ítems necesarios
 	public EstadoPanadero(ArtesanosSystems npc)
 	{
 		this.npc = npc;
@@ -19,6 +20,7 @@ public class EstadoPanadero : IOficioState
 
 	}
 
+	// Método que ejecuta la rutina del panadero
 	public IEnumerator EjecutarRutina()
 	{
 		Debug.Log("[EstadoPanadero] Re / Iniciando rutina...");
@@ -59,15 +61,15 @@ public class EstadoPanadero : IOficioState
 				if (npc.npcInventario.ObtenerCantidad(pan) > 0)
 				{
 					npc.npcInventario.QuitarItem(pan, 1);
-					npc.almacenInv.almacenInv.AgregarItem(pan, 1);
+					npc.mesa.almacenInv.AgregarItem(pan, 1);
 					Debug.Log("[EstadoPanadero] Masa almacenada.");
 				}
 			}
 			else
 			{
-				if (npc.almacenInv.almacenInv.ObtenerCantidad(harina) > 0)
+				if (npc.mesa.almacenInv.ObtenerCantidad(harina) > 0)
 				{
-					npc.almacenInv.almacenInv.QuitarItem(harina, 1);
+					npc.mesa.almacenInv.QuitarItem(harina, 1);
 					npc.npcInventario.AgregarItem(harina, 1);
 					Debug.Log("[EstadoPanadero] se ha tomado harina del almacén.");
 				}
@@ -93,9 +95,9 @@ public class EstadoPanadero : IOficioState
 				yield return npc.EsperarConPausa(5f);
 
 				// Verifica si hay madera en el almacén
-				if (npc.almacenInv.almacenInv.ObtenerCantidad(madera) > 0)
+				if (npc.mesa.almacenInv.ObtenerCantidad(madera) > 0)
 				{
-					npc.almacenInv.almacenInv.QuitarItem(madera, 1);
+					npc.mesa.almacenInv.QuitarItem(madera, 1);
 					npc.npcInventario.AgregarItem(madera, 1);
 
 					Debug.Log("[EstadoPanadero] Madera obtenida del almacén.");

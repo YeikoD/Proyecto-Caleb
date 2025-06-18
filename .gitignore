@@ -361,3 +361,31 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+# Mis Ignorados bro
+# Unity
+Library/
+Temp/
+Obj/
+Build/
+Logs/
+MemoryCaptures/
+.vs/
+.vscode/
+.idea/
+
+# Visual Studio
+*.csproj
+*.sln
+*.user
+*.suo
+*.cache
+*.pidb
+*.sdf
+*.db
+
+# Otros
+*.apk
+*.exe
+.vsconfig
+/Assets/Scripts/NPCs/Artesanos/MesasArtesanos.cs

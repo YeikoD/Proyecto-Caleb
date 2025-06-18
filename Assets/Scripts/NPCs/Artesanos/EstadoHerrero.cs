@@ -41,18 +41,18 @@ public class EstadoHerrero : IOficioState
 				npc.rutaTrazada = npc.rutasMediodia[1]; // Almacén
 				yield return npc.EsperarConPausa(5f);
 
-				if (npc.npcInventario.ObtenerCantidad(lingoteHierro) > 0 && npc.almacenInv.almacenInv.ObtenerCantidad(lingoteHierro) < 6)
+				if (npc.npcInventario.ObtenerCantidad(lingoteHierro) > 0 && npc.mesa.almacenInv.ObtenerCantidad(lingoteHierro) < 6)
 				{
 					npc.npcInventario.QuitarItem(lingoteHierro, 1);
-					npc.almacenInv.almacenInv.AgregarItem(lingoteHierro, 1);
+					npc.mesa.almacenInv.AgregarItem(lingoteHierro, 1);
 					Debug.Log("[EstadoHerrero] Lingote de hierro almacenado.");
 				}
 			}
 			else
 			{
-				if (npc.almacenInv.almacenInv.ObtenerCantidad(hierro) > 0)
+				if (npc.mesa.almacenInv.ObtenerCantidad(hierro) > 0)
 				{
-					npc.almacenInv.almacenInv.QuitarItem(hierro, 1);
+					npc.mesa.almacenInv.QuitarItem(hierro, 1);
 					npc.npcInventario.AgregarItem(hierro, 1);
 					Debug.Log("[EstadoHerrero] Se ha tomado hierro del almacén.");
 				}
@@ -78,9 +78,9 @@ public class EstadoHerrero : IOficioState
 				yield return npc.EsperarConPausa(5f);
 
 				// Verifica si hay madera en el almacén
-				if (npc.almacenInv.almacenInv.ObtenerCantidad(madera) > 0)
+				if (npc.mesa.almacenInv.ObtenerCantidad(madera) > 0)
 				{
-					npc.almacenInv.almacenInv.QuitarItem(madera, 1);
+					npc.mesa.almacenInv.QuitarItem(madera, 1);
 					npc.npcInventario.AgregarItem(madera, 1);
 
 					Debug.Log("[EstadoHerrero] Madera obtenida del almacén.");
@@ -103,9 +103,10 @@ public class EstadoHerrero : IOficioState
 				else
 				{
 					Debug.Log("[EstadoHerrero] No hay madera para encender el horno. Esperando...");
-					yield return npc.EsperarConPausa(5f);
-					npc.CambiarEstado(new EstadoHerrero(npc)); // Repite la rutina de herrero
-					yield break; // Termina la rutina actual
+					npc.rutaTrazada = npc.rutasMediodia[5]; // Pedir madera al soberano
+					yield return npc.EsperarConPausa(30f);
+					npc.rutaTrazada = npc.rutasMediodia[0]; // Esperar en el taller
+					yield return npc.EsperarConPausa(30f);
 				}
 			}
 		}
