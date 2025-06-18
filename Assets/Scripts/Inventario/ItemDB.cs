@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "BaseDeDatosDeItems", menuName = "Inventario/Base de Datos de Items")]
@@ -8,7 +9,9 @@ public class ItemDB : ScriptableObject
 
     public List<ItemData> todosLosItems;
 
-    private void OnEnable()
+    public ItemDB itemDataBase; // Referencia a la base de datos de items
+
+	private void OnEnable()
     {
         // Si ya hay una instancia, no la sobrescribas
         if (Instancia == null)

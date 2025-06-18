@@ -10,6 +10,8 @@ public class Inventario : MonoBehaviour
 	{
 		if (itemDb != null)
 			InicializarDesdeBaseDeDatos(itemDb);
+
+		itemDb = ItemDB.Instancia.itemDataBase; // Asigna la base de datos de items desde el singleton
 	}
 
 	// Agrega una cantidad de un item al inventario. Si el item ya existe, suma la cantidad; si no, lo añade.
