@@ -16,13 +16,24 @@ public class EstadoSiervoTransportista : ISiervoState
 		harina = ItemDB.Instancia.ObtenerItemPorNombre("Harina");
 		masa = ItemDB.Instancia.ObtenerItemPorNombre("Masa");
 		madera = ItemDB.Instancia.ObtenerItemPorNombre("Madera");
-
 	}
 
-	public IEnumerator EjecutarRutina()
+	public IEnumerator EjecutarRutina(string solicitante, string recurso)
 	{
-		// Repite la rutina de herrero
-		yield return npc.EsperarConPausa(5f);
-		npc.CambiarEstado(new EstadoSiervoTransportista(npc));
+		if (solicitante == "herrero")
+		{
+			yield return npc.EsperarConPausa(15f);
+			npc.rutaTrazada = npc.rutasTrabajo[0];
+			yield return npc.EsperarConPausa(5f);
+
+			if (recurso == "madera" && npc.mesa.almacenInv.ObtenerCantidad(madera) > 0)
+			{
+				Debug.Log("[EstadoSiervoTransportista] Entregando madera al herrero.");
+				npc.mesa.almacenInv.QuitarItem(madera, 1);
+				npc.npcInventario.AgregarItem(madera, 1);
+				npc.rutaTrazada = npc.rutasTrabajo[1]; // Taller herrero
+				yield return npc.EsperarConPausa(10f);
+			}
+		}
 	}
 }

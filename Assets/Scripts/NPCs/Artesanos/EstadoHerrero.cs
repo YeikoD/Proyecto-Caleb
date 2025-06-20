@@ -29,6 +29,7 @@ public class EstadoHerrero : IOficioState
 			npc.rutaTrazada = npc.rutasMediodia[1]; // Almacén
 			yield return npc.EsperarConPausa(5f);
 
+			// Verifica si hay hierro en el inventario del NPC
 			if (npc.npcInventario.ObtenerCantidad(hierro) > 0)
 			{
 				Debug.Log("[EstadoHerrero] Se dirige a fundir el hierro");
@@ -50,11 +51,22 @@ public class EstadoHerrero : IOficioState
 			}
 			else
 			{
+				// Si no hay hierro en el inventario del NPC, intenta obtenerlo del almacén
 				if (npc.mesa.almacenInv.ObtenerCantidad(hierro) > 0)
 				{
 					npc.mesa.almacenInv.QuitarItem(hierro, 1);
 					npc.npcInventario.AgregarItem(hierro, 1);
 					Debug.Log("[EstadoHerrero] Se ha tomado hierro del almacén.");
+				}
+				else
+				{
+					npc.sinHierro = true;
+					Debug.Log("[EstadoHerrero] No hay hierro. Solicitando...");
+					npc.rutaTrazada = npc.rutasMediodia[5]; // Pedir hierro al soberano
+					yield return npc.EsperarConPausa(14);
+					npc.rutaTrazada = npc.rutasMediodia[0]; // Esperar en el taller
+					yield return npc.EsperarConPausa(30f);
+					npc.sinHierro = false;
 				}
 			}
 		}
@@ -102,11 +114,13 @@ public class EstadoHerrero : IOficioState
 				}
 				else
 				{
+					npc.sinMadera = true;
 					Debug.Log("[EstadoHerrero] No hay madera para encender el horno. Esperando...");
 					npc.rutaTrazada = npc.rutasMediodia[5]; // Pedir madera al soberano
-					yield return npc.EsperarConPausa(30f);
+					yield return npc.EsperarConPausa(14f);
 					npc.rutaTrazada = npc.rutasMediodia[0]; // Esperar en el taller
 					yield return npc.EsperarConPausa(30f);
+					npc.sinMadera = false;
 				}
 			}
 		}

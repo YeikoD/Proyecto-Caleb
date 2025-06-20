@@ -15,6 +15,9 @@ public class ArtesanosSystems : NPCBaseSystems
 	public bool hornoEncendido; // Indica si el horno está encendido o no
 	public Oficio oficio;
 
+	public bool sinMadera;
+	public bool sinHierro;
+
 	[Header("Referencias")]
 	public MesaInteraccion mesa; // Inventario de alamcenamiento
 
