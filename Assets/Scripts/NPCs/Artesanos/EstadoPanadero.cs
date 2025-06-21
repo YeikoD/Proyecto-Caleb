@@ -3,13 +3,17 @@ using UnityEngine;
 
 public class EstadoPanadero : IOficioState
 {
-	private ArtesanosSystems npc;
+	private OficioSystems npc;
 
 	// Cacheo de referencias a los ítems
 	private ItemData madera, harina, masa, pan;
 
+	// Reemplaza los literales por constantes para los recursos
+	private const string RECURSO_MADERA = "madera";
+	private const string RECURSO_HARINA = "harina";
+
 	// Constructor que recibe el NPC y cachea las referencias a los ítems necesarios
-	public EstadoPanadero(ArtesanosSystems npc)
+	public EstadoPanadero(OficioSystems npc)
 	{
 		this.npc = npc;
 		// Cachear referencias a los ítems
@@ -23,6 +27,7 @@ public class EstadoPanadero : IOficioState
 	// Método que ejecuta la rutina del panadero
 	public IEnumerator EjecutarRutina()
 	{
+		yield return npc.EsperarConPausa(5f);
 		Debug.Log("[EstadoPanadero] Re / Iniciando rutina...");
 
 		if (npc.hornoEncendido)
@@ -73,6 +78,18 @@ public class EstadoPanadero : IOficioState
 					npc.npcInventario.AgregarItem(harina, 1);
 					Debug.Log("[EstadoPanadero] se ha tomado harina del almacén.");
 				}
+				else
+				{
+					Debug.Log("[EstadoPanadero] No hay harina. Solicitando...");
+					npc.rutaTrazada = npc.rutasMediodia[4]; // Pedir harina al soberano
+
+					yield return npc.EsperarConPausa(10f);
+
+					EventManager.TriggerEvent("InicioTransporte", ("panadero", RECURSO_HARINA));
+					npc.rutaTrazada = npc.rutasMediodia[0]; // Esperar en la panadería
+
+					yield return npc.EsperarConPausa(25f);
+				}
 			}
 		}
 		else
@@ -83,7 +100,9 @@ public class EstadoPanadero : IOficioState
 			if (npc.npcInventario.ObtenerCantidad(madera) > 0)
 			{
 				npc.rutaTrazada = npc.rutasMediodia[3]; // Horno
+
 				yield return npc.EsperarConPausa(5f);
+
 				npc.npcInventario.QuitarItem(madera, 1);
 				npc.hornoEncendido = true; // Cambia el estado del horno a encendido
 				Debug.Log("[EstadoPanadero] Horno encendido. Comenzando a trabajar...");
@@ -119,16 +138,41 @@ public class EstadoPanadero : IOficioState
 				}
 				else
 				{
-					Debug.Log("[EstadoPanadero] No hay madera para encender el horno. Esperando...");
-					yield return npc.EsperarConPausa(5f);
-					npc.CambiarEstado(new EstadoPanadero(npc)); // Repite la rutina de herrero
-					yield break; // Termina la rutina actual
+					Debug.Log("[EstadoPanadero] No hay madera. Solicitando...");
+					npc.rutaTrazada = npc.rutasMediodia[4]; // Pedir madera al soberano
+
+					yield return npc.EsperarConPausa(10f);
+
+					EventManager.TriggerEvent("InicioTransporte", ("panadero", RECURSO_MADERA));
+					npc.rutaTrazada = npc.rutasMediodia[0]; // Esperar en la panadería
+
+					yield return npc.EsperarConPausa(25f);
 				}
 			}
 		}
 
-		// Repite la rutina de herrero
+		// Repite la rutina de panadero
 		yield return npc.EsperarConPausa(5f);
 		npc.CambiarEstado(new EstadoPanadero(npc));
+	}
+
+	public void RecibirRecurso((string recurso, int cantidad) eventData)
+	{
+		Debug.Log($"[EstadoPanadero] Evento 'EntregarRecursoPanadero' recibido con recurso: {eventData.recurso}, cantidad: {eventData.cantidad}");
+
+		if (eventData.recurso == "madera")
+		{
+			npc.mesa.almacenInv.AgregarItem(madera, eventData.cantidad);
+			Debug.Log($"[EstadoPanadero] Madera recibida por repartidor: {eventData.cantidad} unidades.");
+		}
+		else if (eventData.recurso == "harina")
+		{
+			npc.mesa.almacenInv.AgregarItem(harina, eventData.cantidad);
+			Debug.Log($"[EstadoPanadero] Harina recibida por repartidor: {eventData.cantidad} unidades.");
+		}
+		else
+		{
+			Debug.LogWarning($"[EstadoPanadero] Recurso '{eventData.recurso}' no reconocido.");
+		}
 	}
 }

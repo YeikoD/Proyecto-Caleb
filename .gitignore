@@ -389,3 +389,7 @@ MemoryCaptures/
 *.exe
 .vsconfig
 /Assets/Scripts/NPCs/Artesanos/MesasArtesanos.cs
+/Assets/Scripts/Inventario/InventarioTester.cs
+/Assets/Scripts/NPCs/Artesanos/ArtesanosSystems.cs
+/Assets/Scripts/NPCs/Siervos/EstadoSiervoTransportista.cs
+/Assets/Scripts/NPCs/Siervos/ISiervoState.cs
