@@ -11,6 +11,7 @@ public class EstadoHerrero : IOficioState
 	// Reemplaza los literales por constantes para los recursos
 	private const string RECURSO_MADERA = "madera";
 	private const string RECURSO_HIERRO = "hierro";
+	private const string RECURSO_LINGOTE_HIERRO = "lingoteHierro";
 
 	public EstadoHerrero(OficioSystems npc)
 	{
@@ -59,7 +60,7 @@ public class EstadoHerrero : IOficioState
 	{
 		Debug.Log("[EstadoHerrero] Se dirige a fundir el hierro");
 		npc.rutaTrazada = npc.rutasMediodia[2]; // Horno
-		yield return npc.EsperarConPausa(60f);
+		yield return npc.EsperarConPausa(Random.Range(50, 70));
 
 		npc.npcInventario.QuitarItem(hierro, 1);
 		npc.npcInventario.AgregarItem(lingoteHierro, 1);
@@ -100,7 +101,7 @@ public class EstadoHerrero : IOficioState
 	private IEnumerator EncenderHorno()
 	{
 		npc.rutaTrazada = npc.rutasMediodia[2]; // Horno
-		yield return npc.EsperarConPausa(5f);
+		yield return npc.EsperarConPausa(Random.Range(4, 7));
 
 		npc.npcInventario.QuitarItem(madera, 1);
 		npc.hornoEncendido = true; // Cambia el estado del horno a encendido

@@ -64,7 +64,7 @@ public class EstadoPanadero : IOficioState
 	{
 		Debug.Log("[EstadoPanadero] Se dirige a preprar masa");
 		npc.rutaTrazada = npc.rutasMediodia[2]; // Mesa de amasar
-		yield return npc.EsperarConPausa(30f);
+		yield return npc.EsperarConPausa(Random.Range(20, 35));
 
 		npc.npcInventario.QuitarItem(harina, 1);
 		npc.npcInventario.AgregarItem(masa, 1);
@@ -76,7 +76,7 @@ public class EstadoPanadero : IOficioState
 		Debug.Log("[EstadoPanadero] pan horneandose...");
 		npc.rutaTrazada = npc.rutasMediodia[0]; // Panadería
 
-		yield return npc.EsperarConPausa(20f);
+		yield return npc.EsperarConPausa(Random.Range(20, 30));
 
 		npc.npcInventario.QuitarItem(masa, 1);
 		npc.npcInventario.AgregarItem(pan, 1);
@@ -96,7 +96,7 @@ public class EstadoPanadero : IOficioState
 	private IEnumerator EncenderHorno()
 	{
 		npc.rutaTrazada = npc.rutasMediodia[3]; // Horno
-		yield return npc.EsperarConPausa(5f);
+		yield return npc.EsperarConPausa(Random.Range(4, 7));
 
 		npc.npcInventario.QuitarItem(madera, 1);
 		npc.hornoEncendido = true; // Cambia el estado del horno a encendido
