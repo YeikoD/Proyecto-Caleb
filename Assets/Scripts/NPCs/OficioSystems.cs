@@ -146,32 +146,69 @@ public class OficioSystems : NPCBaseSystems
 
 	public IEnumerator EsperarConPausa(float tiempo)
 	{
-		float tiempoTranscurrido = 0f;
+		float tiempoRestante = tiempo;
 
-		while (tiempoTranscurrido < tiempo)
+		while (tiempoRestante > 0)
 		{
 			if (mirandoPlayer)
 			{
-				yield return new WaitUntil(() => !mirandoPlayer);
+				Debug.Log("[EstadoPanadero] Pausa activada. Esperando...");
+				PausarMovimiento(true); // Detener el movimiento del NPC
+				while (mirandoPlayer)
+				{
+					yield return null; // Espera mientras mira al jugador
+				}
+				PausarMovimiento(false); // Reanudar el movimiento del NPC
+				Debug.Log("[EstadoPanadero] Reanudando rutina.");
 			}
 
 			yield return null;
-			tiempoTranscurrido += Time.deltaTime;
+			tiempoRestante -= Time.deltaTime;
+		}
+
+		Debug.Log("[EstadoPanadero] Espera completada.");
+	}
+
+	public void PausarMovimiento(bool pausar)
+	{
+		if (agente == null)
+		{
+			Debug.LogError("[OficioSystems] NavMeshAgent no asignado.");
+			return;
+		}
+
+		agente.DetenerMovimiento(pausar);
+
+		if (pausar)
+		{
+			Debug.Log("[OficioSystems] Movimiento del NPC pausado.");
+		}
+		else
+		{
+			Debug.Log("[OficioSystems] Movimiento del NPC reanudado.");
 		}
 	}
 
-	public void OnTriggerStay(Collider other)
+	private void OnTriggerStay(Collider other)
 	{
-		// Si el objeto que entra es el jugador, el NPC lo mira
 		if (other.CompareTag("Player"))
 		{
 			mirandoPlayer = true;
 			RotateTowardsTarget(other.transform.position);
+
+			// Pausar el movimiento del NPC
+			PausarMovimiento(true);
 		}
 	}
 
 	private void OnTriggerExit(Collider other)
 	{
-		mirandoPlayer = false;
+		if (other.CompareTag("Player"))
+		{
+			mirandoPlayer = false;
+
+			// Reanudar el movimiento del NPC
+			PausarMovimiento(false);
+		}
 	}
 }

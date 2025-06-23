@@ -150,4 +150,11 @@ public class EstadoPanadero : IOficioState
 			Debug.LogWarning($"[EstadoPanadero] Recurso '{eventData.recurso}' no reconocido.");
 		}
 	}
+
+	private bool _debePausar = false;
+	public void MirarJugador(bool mirar)
+	{
+		_debePausar = mirar;
+		Debug.Log($"[EstadoPanadero] Estado de pausa actualizado: {_debePausar}");
+	}
 }

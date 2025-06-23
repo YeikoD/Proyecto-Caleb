@@ -104,4 +104,11 @@ public class EstadoSiervoRepartidor : IOficioState
 
         npc.rutaTrazada = npc.rutasMediodia[0]; // Esperar en el almacen
     }
+
+	private bool _debePausar = false;
+	public void MirarJugador(bool mirar)
+	{
+		_debePausar = mirar;
+		Debug.Log($"[EstadoPanadero] Estado de pausa actualizado: {_debePausar}");
+	}
 }

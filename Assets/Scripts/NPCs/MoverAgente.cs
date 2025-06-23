@@ -17,7 +17,7 @@ public class MoverAgente: MonoBehaviour
         {
             agente.SetDestination(destino.position);  // Le decimos al agente que se mueva a la nueva posición.
         }
-    }
+	}
 
     // Método para mover al NPC a una posición en el espacio (se le pasa una posición como parámetro)
     public void MoverA(Vector3 destino)
@@ -30,5 +30,10 @@ public class MoverAgente: MonoBehaviour
     {
         // Devuelve true si el agente ha llegado al destino y ya no está calculando el camino.
         return !agente.pathPending && agente.remainingDistance <= agente.stoppingDistance;
+    }
+
+    public void DetenerMovimiento(bool pausarAgente)
+    {
+        agente.isStopped = pausarAgente;
     }
 }
