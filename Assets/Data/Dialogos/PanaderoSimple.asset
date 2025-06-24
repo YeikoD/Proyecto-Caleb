@@ -86,7 +86,7 @@ MonoBehaviour:
       _typeConstraint: 0
       _dynamic: 1
   entrada: {fileID: 0}
-  textoNPC: "Se\xF1oria, nesecita algo?"
+  textoNPC: "Que mas precisas se\xF1or?"
   opciones:
   - textoJugador: "\xBFQue llevas encima?"
     terminarDialogo: 0
@@ -455,7 +455,7 @@ MonoBehaviour:
       _typeConstraint: 0
       _dynamic: 1
   entrada: {fileID: 0}
-  textoNPC: 'Estoy llevando: {pan}  pan'
+  textoNPC: "Esto es lo que tengo: \n{lista_items}"
   opciones:
   - textoJugador: Gracias eso queria saber
     terminarDialogo: 0

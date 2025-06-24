@@ -55,11 +55,11 @@ public class EstadoSiervoRepartidor : IOficioState
 
         if (solicitante == SOLICITUD_HERRERO)
         {
-            if (recurso == RECURSO_MADERA && npc.mesa.almacenInv.ObtenerCantidad(madera) > 0)
+            if (recurso == RECURSO_MADERA && npc.puestoTrabajo.almacenInv.ObtenerCantidad(madera) > 0)
             {
                 yield return EntregarRecurso(madera, 2, "EntregarRecursoHerrero", RECURSO_MADERA);
             }
-            else if (recurso == RECURSO_HIERRO && npc.mesa.almacenInv.ObtenerCantidad(hierro) > 0)
+            else if (recurso == RECURSO_HIERRO && npc.puestoTrabajo.almacenInv.ObtenerCantidad(hierro) > 0)
             {
                 yield return EntregarRecurso(hierro, 2, "EntregarRecursoHerrero", RECURSO_HIERRO);
             }
@@ -70,11 +70,11 @@ public class EstadoSiervoRepartidor : IOficioState
         }
         else if (solicitante == SOLICITUD_PANADERO)
         {
-            if (recurso == RECURSO_MADERA && npc.mesa.almacenInv.ObtenerCantidad(madera) > 0)
+            if (recurso == RECURSO_MADERA && npc.puestoTrabajo.almacenInv.ObtenerCantidad(madera) > 0)
             {
                 yield return EntregarRecurso(madera, 3, "EntregarRecursoPanadero", RECURSO_MADERA);
             }
-            else if (recurso == RECURSO_HARINA && npc.mesa.almacenInv.ObtenerCantidad(harina) > 0)
+            else if (recurso == RECURSO_HARINA && npc.puestoTrabajo.almacenInv.ObtenerCantidad(harina) > 0)
             {
                 yield return EntregarRecurso(harina, 3, "EntregarRecursoPanadero", RECURSO_HARINA);
             }
@@ -90,7 +90,7 @@ public class EstadoSiervoRepartidor : IOficioState
     {
         Debug.Log($"[EstadoSiervoRepartidor] Entregando {recursoNombre} al {solicitante}.");
 
-        npc.mesa.almacenInv.QuitarItem(item, 1);
+        npc.puestoTrabajo.almacenInv.QuitarItem(item, 1);
         npc.npcInventario.AgregarItem(item, 1);
         npc.rutaTrazada = npc.rutasMediodia[rutaIndex];
 

@@ -68,10 +68,10 @@ public class EstadoHerrero : IOficioState
 		npc.rutaTrazada = npc.rutasMediodia[1]; // Almacén
 		yield return npc.EsperarConPausa(5f);
 
-		if (npc.npcInventario.ObtenerCantidad(lingoteHierro) > 0 && npc.mesa.almacenInv.ObtenerCantidad(lingoteHierro) < 6)
+		if (npc.npcInventario.ObtenerCantidad(lingoteHierro) > 0 && npc.puestoTrabajo.almacenInv.ObtenerCantidad(lingoteHierro) < 6)
 		{
 			npc.npcInventario.QuitarItem(lingoteHierro, 1);
-			npc.mesa.almacenInv.AgregarItem(lingoteHierro, 1);
+			npc.puestoTrabajo.almacenInv.AgregarItem(lingoteHierro, 1);
 			Debug.Log("[EstadoHerrero] Lingote de hierro almacenado.");
 		}
 	}
@@ -110,9 +110,9 @@ public class EstadoHerrero : IOficioState
 
 	private IEnumerator ObtenerRecurso(ItemData item, string recurso, float pausaAntesSolicitar, float pausaDespuesSolicitar, float pausaFinal)
 	{
-		if (npc.mesa.almacenInv.ObtenerCantidad(item) > 0)
+		if (npc.puestoTrabajo.almacenInv.ObtenerCantidad(item) > 0)
 		{
-			npc.mesa.almacenInv.QuitarItem(item, 1);
+			npc.puestoTrabajo.almacenInv.QuitarItem(item, 1);
 			npc.npcInventario.AgregarItem(item, 1);
 			Debug.Log($"[EstadoHerrero] {recurso} obtenido del almacén.");
 		}
@@ -135,12 +135,12 @@ public class EstadoHerrero : IOficioState
 
 		if (eventData.recurso == RECURSO_MADERA)
 		{
-			npc.mesa.almacenInv.AgregarItem(madera, eventData.cantidad);
+			npc.puestoTrabajo.almacenInv.AgregarItem(madera, eventData.cantidad);
 			Debug.Log($"[EstadoHerrero] Madera recibida por repartidor: {eventData.cantidad} unidades.");
 		}
 		else if (eventData.recurso == RECURSO_HIERRO)
 		{
-			npc.mesa.almacenInv.AgregarItem(hierro, eventData.cantidad);
+			npc.puestoTrabajo.almacenInv.AgregarItem(hierro, eventData.cantidad);
 			Debug.Log($"[EstadoHerrero] Hierro recibido por repartidor: {eventData.cantidad} unidades.");
 		}
 		else

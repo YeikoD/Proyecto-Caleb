@@ -29,7 +29,7 @@ public class OficioSystems : NPCBaseSystems
 	public bool mirandoPlayer;
 
 	[Header("Referencias")]
-	public MesaInteraccion mesa;			// Inventario de alamcenamiento
+	public PuestoTrabajo puestoTrabajo;			// Inventario de alamcenamiento
 
 	[Header("Rutas de los artesanos")]
     public Transform[] rutasMediodia;

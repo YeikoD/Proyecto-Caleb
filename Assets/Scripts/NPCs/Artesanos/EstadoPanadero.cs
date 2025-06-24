@@ -63,7 +63,7 @@ public class EstadoPanadero : IOficioState
 	private IEnumerator PrepararPan()
 	{
 		Debug.Log("[EstadoPanadero] Se dirige a preprar masa");
-		npc.rutaTrazada = npc.rutasMediodia[2]; // Mesa de amasar
+		npc.rutaTrazada = npc.rutasMediodia[2]; // puestoTrabajo de amasar
 		yield return npc.EsperarConPausa(Random.Range(20, 35));
 
 		npc.npcInventario.QuitarItem(harina, 1);
@@ -88,7 +88,7 @@ public class EstadoPanadero : IOficioState
 		if (npc.npcInventario.ObtenerCantidad(pan) > 0)
 		{
 			npc.npcInventario.QuitarItem(pan, 1);
-			npc.mesa.almacenInv.AgregarItem(pan, 1);
+			npc.puestoTrabajo.almacenInv.AgregarItem(pan, 1);
 			Debug.Log("[EstadoPanadero] Masa almacenada.");
 		}
 	}
@@ -106,9 +106,9 @@ public class EstadoPanadero : IOficioState
 	// Método auxiliar para obtener recursos del almacén o solicitarlos
 	private IEnumerator ObtenerRecursoDeAlmacen(ItemData item, string recurso, float pausaAntesSolicitar, int rutaSolicitar, float pausaDespuesSolicitar, int rutaFinal, string logObtenido, string logSolicitando, string eventoSolicitar, string logNoHay)
 	{
-		if (npc.mesa.almacenInv.ObtenerCantidad(item) > 0)
+		if (npc.puestoTrabajo.almacenInv.ObtenerCantidad(item) > 0)
 		{
-			npc.mesa.almacenInv.QuitarItem(item, 1);
+			npc.puestoTrabajo.almacenInv.QuitarItem(item, 1);
 			npc.npcInventario.AgregarItem(item, 1);
 			Debug.Log(logObtenido);
 
@@ -137,12 +137,12 @@ public class EstadoPanadero : IOficioState
 
 		if (eventData.recurso == RECURSO_MADERA)
 		{
-			npc.mesa.almacenInv.AgregarItem(madera, eventData.cantidad);
+			npc.puestoTrabajo.almacenInv.AgregarItem(madera, eventData.cantidad);
 			Debug.Log($"[EstadoPanadero] Madera recibida por repartidor: {eventData.cantidad} unidades.");
 		}
 		else if (eventData.recurso == RECURSO_HARINA)
 		{
-			npc.mesa.almacenInv.AgregarItem(harina, eventData.cantidad);
+			npc.puestoTrabajo.almacenInv.AgregarItem(harina, eventData.cantidad);
 			Debug.Log($"[EstadoPanadero] Harina recibida por repartidor: {eventData.cantidad} unidades.");
 		}
 		else
