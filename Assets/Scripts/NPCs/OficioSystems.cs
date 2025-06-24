@@ -53,11 +53,13 @@ public class OficioSystems : NPCBaseSystems
                     case CampesinoOficio.Herrero:
                         estadoHerrero = new EstadoHerrero(this);
                         CambiarEstado(estadoHerrero);
-                        break;
+						puestoTrabajo = ReferenciasGlobales.Instancia.PUESTO_HERRERO; // Asignar el puesto de trabajo del herrero
+						break;
                     case CampesinoOficio.Panadero:
                         estadoPanadero = new EstadoPanadero(this);
                         CambiarEstado(estadoPanadero);
-                        break;
+						puestoTrabajo = ReferenciasGlobales.Instancia.PUESTO_PANADERO; // Asignar el puesto de trabajo del panadero
+						break;
                     case CampesinoOficio.Ninguno:
                         // No hacer nada
                         break;
@@ -75,6 +77,7 @@ public class OficioSystems : NPCBaseSystems
 					case SiervoOifico.Repartidor:
 						estadoSiervoRepartidor = new EstadoSiervoRepartidor(this);
 						CambiarEstado(estadoSiervoRepartidor);
+						puestoTrabajo = ReferenciasGlobales.Instancia.PUESTO; // Asignar el puesto de trabajo del repartidor
 						break;
 					case SiervoOifico.Gestionador:
 						break;

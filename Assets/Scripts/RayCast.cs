@@ -15,7 +15,6 @@ public class RayCast : MonoBehaviour
 		TextDetect.SetActive(false);
 	}
 
-
 	void Update()
 	{
 		RaycastHit hit;
@@ -31,9 +30,6 @@ public class RayCast : MonoBehaviour
 				{
 					hit.collider.transform.GetComponent<NPCDeciciones>().IniciarDialogo();
 				}
-
-				var inventario = hit.collider.transform.GetComponent<Inventario>();
-				EventManager.TriggerEvent("EntregarRecursoRepartidor", inventario);
 				hit.collider.transform.GetComponent<Inventario>().MostrarInventario();
 			}
 			else if (hit.collider.tag == "MESA")

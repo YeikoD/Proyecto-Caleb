@@ -5,13 +5,13 @@ public class NPCDeciciones : MonoBehaviour
 {
 	[Header("Referencias: Scripts")]
 	[SerializeField] private DialogoSystems dialogoSystems;
-	[SerializeField] private OficioSystems oficioSystems;
-	[SerializeField] private Inventario inventario;
+	[SerializeField] public OficioSystems oficioSystems;
+	[SerializeField] public Inventario inventario;
 
 	[Header("Referencias: Dialogos")]
 	public GrafoDialogo grafo;
 
-	private void Awake()
+	private void Start()
 	{
 		dialogoSystems = ReferenciasGlobales.Instancia.dialogoSystems;
 		oficioSystems = GetComponent<OficioSystems>();
