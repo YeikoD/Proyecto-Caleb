@@ -32,7 +32,6 @@ public class Inventario : MonoBehaviour
 		return new List<ItemCantidad>(inventario); // Devuelve una copia para evitar modificaciones externas
 	}
 
-
 	// Agrega una cantidad de un item al inventario. Si el item ya existe, suma la cantidad; si no, lo añade.
 	public void AgregarItem(ItemData item, int cantidad)
 	{
