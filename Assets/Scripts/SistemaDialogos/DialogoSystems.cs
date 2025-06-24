@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Text.RegularExpressions;
 
 public class DialogoSystems : MonoBehaviour
 {
@@ -141,16 +142,39 @@ public class DialogoSystems : MonoBehaviour
 	// Método que reemplaza etiquetas de texto por cantidades dinámicas del inventario actual del NPC
 	string ReemplazarVariables(string texto)
 	{
-		if (currentInventario == null)
-			return texto;
+		if (currentInventario == null) return texto;
 
-		texto = texto.Replace("{madera}", currentInventario.ObtenerCantidad(madera).ToString());
-		texto = texto.Replace("{harina}", currentInventario.ObtenerCantidad(harina).ToString());
-		texto = texto.Replace("{pan}", currentInventario.ObtenerCantidad(pan).ToString());
-		texto = texto.Replace("{hierro}", currentInventario.ObtenerCantidad(hierro).ToString());
+		// --- Reemplazo de {item:nombre} ---
+		var regexItem = new Regex(@"{item:(\w+)}");
+		texto = regexItem.Replace(texto, match =>
+		{
+			string nombreItem = match.Groups[1].Value.ToLower();
+			ItemData item = ItemDB.Instancia.ObtenerItemPorNombre(nombreItem);
+			if (item == null) return "";
+
+			int cantidad = currentInventario.ObtenerCantidad(item);
+			return cantidad > 0 ? $"{cantidad} de {item.nombreItem}" : "";
+		});
+
+		// --- Reemplazo de {lista_items} ---
+		if (texto.Contains("{lista_items}"))
+		{
+			List<string> lineas = new();
+			foreach (ItemCantidad ic in currentInventario.ObtenerTodos())
+			{
+				if (ic.cantidad > 0)
+				{
+					lineas.Add($"- {ic.item.nombreItem}: {ic.cantidad}");
+				}
+			}
+
+			string listaFinal = lineas.Count > 0 ? string.Join("\n", lineas) : "(no lleva nada)";
+			texto = texto.Replace("{lista_items}", listaFinal);
+		}
 
 		return texto;
 	}
+
 
 	private void OnEnable()
 	{
