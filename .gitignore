@@ -393,3 +393,8 @@ MemoryCaptures/
 /Assets/Scripts/NPCs/Artesanos/ArtesanosSystems.cs
 /Assets/Scripts/NPCs/Siervos/EstadoSiervoTransportista.cs
 /Assets/Scripts/NPCs/Siervos/ISiervoState.cs
+/Assets/Scripts/SistemaDialogos/CambiarRelacion.cs
+/Assets/Scripts/SistemaDialogos/OpcionDialogo.cs
+/Assets/Scripts/SistemaDialogos/LineaDialogos.cs
+/Assets/Scripts/SistemaDialogos/prueba.cs
+/Assets/Scripts/SistemaDialogos/EfectoDialogo.cs
