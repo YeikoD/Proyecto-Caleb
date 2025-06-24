@@ -8,4 +8,5 @@ public class OpcionNodo
 	public string condicion;         // En el futuro podemos usar esto para filtrar opciones
 	public string valorEsperado;
 	public int cambiarRelacion;
+	public CondicionDialogo[] condiciones;
 }

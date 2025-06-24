@@ -30,9 +30,13 @@ public class RayCast : MonoBehaviour
             {
                 if (Input.GetKeyDown(KeyCode.E))
                 {
-                    //hit.collider.transform.GetComponent<NpcMover>().Dialogo();
+                    hit.collider.transform.GetComponent<NPCDeciciones>().IniciarDialogo();
                 }
-            }
+
+                var inventario = hit.collider.transform.GetComponent<Inventario>();
+				EventManager.TriggerEvent("EntregarRecursoRepartidor", inventario);
+				hit.collider.transform.GetComponent<Inventario>().MostrarInventario();
+			}
 
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * distancia, Color.green);
         }

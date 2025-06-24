@@ -1,0 +1,540 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8570030295116723384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22df4fbdc2642ae4a900c9b3ecccf06b, type: 3}
+  m_Name: Nodo Dialogo
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 1224, y: 632}
+  ports:
+    keys:
+    - entrada
+    - salidas
+    - salidas 0
+    - salidas 1
+    - salidas 2
+    values:
+    - _fieldName: entrada
+      _node: {fileID: -8570030295116723384}
+      _typeQualifiedName: NodoDialogo, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: salidas 0
+        node: {fileID: -6225263978047705348}
+        reroutePoints: []
+      - fieldName: salidas 0
+        node: {fileID: -7941812877147651718}
+        reroutePoints: []
+      - fieldName: salidas 0
+        node: {fileID: 7840334867086996584}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: salidas
+      _node: {fileID: -8570030295116723384}
+      _typeQualifiedName: NodoDialogo[], Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: salidas 0
+      _node: {fileID: -8570030295116723384}
+      _typeQualifiedName: NodoDialogo, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: entrada
+        node: {fileID: 6464152187387332382}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 1
+    - _fieldName: salidas 1
+      _node: {fileID: -8570030295116723384}
+      _typeQualifiedName: NodoDialogo, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: entrada
+        node: {fileID: -7941812877147651718}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 1
+    - _fieldName: salidas 2
+      _node: {fileID: -8570030295116723384}
+      _typeQualifiedName: NodoDialogo, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: entrada
+        node: {fileID: 7840334867086996584}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 1
+  entrada: {fileID: 0}
+  textoNPC: "Se\xF1oria, nesecita algo?"
+  opciones:
+  - textoJugador: "\xBFQue llevas encima?"
+    terminarDialogo: 0
+    condicion: 
+    valorEsperado: 
+    cambiarRelacion: 0
+    condiciones: []
+  - textoJugador: como va el negocio
+    terminarDialogo: 0
+    condicion: 
+    valorEsperado: 
+    cambiarRelacion: 0
+    condiciones: []
+  - textoJugador: Como va nuestra relacion
+    terminarDialogo: 0
+    condicion: 
+    valorEsperado: 
+    cambiarRelacion: 0
+    condiciones: []
+  - textoJugador: no nada
+    terminarDialogo: 1
+    condicion: 
+    valorEsperado: 
+    cambiarRelacion: 0
+    condiciones: []
+  salidas:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+--- !u!114 &-7941812877147651718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22df4fbdc2642ae4a900c9b3ecccf06b, type: 3}
+  m_Name: Nodo Dialogo
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 392, y: 504}
+  ports:
+    keys:
+    - entrada
+    - salidas
+    - salidas 0
+    values:
+    - _fieldName: entrada
+      _node: {fileID: -7941812877147651718}
+      _typeQualifiedName: NodoDialogo, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: salidas 1
+        node: {fileID: -2949252562109097120}
+        reroutePoints: []
+      - fieldName: salidas 1
+        node: {fileID: -8570030295116723384}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: salidas
+      _node: {fileID: -7941812877147651718}
+      _typeQualifiedName: NodoDialogo[], Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: salidas 0
+      _node: {fileID: -7941812877147651718}
+      _typeQualifiedName: NodoDialogo, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: entrada
+        node: {fileID: -8570030295116723384}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 1
+  entrada: {fileID: 0}
+  textoNPC: Estamos prosperando nuestro inventario es de ... Panes
+  opciones:
+  - textoJugador: Quiero preguntar mas cosas
+    terminarDialogo: 0
+    condicion: 
+    valorEsperado: 
+    cambiarRelacion: 0
+    condiciones: []
+  - textoJugador: bien, me retiro
+    terminarDialogo: 1
+    condicion: 
+    valorEsperado: 
+    cambiarRelacion: 0
+    condiciones: []
+  salidas:
+  - {fileID: 0}
+--- !u!114 &-6225263978047705348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22df4fbdc2642ae4a900c9b3ecccf06b, type: 3}
+  m_Name: Nodo Dialogo
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 1128, y: -24}
+  ports:
+    keys:
+    - entrada
+    - salidas
+    - salidas 0
+    - salidas 1
+    values:
+    - _fieldName: entrada
+      _node: {fileID: -6225263978047705348}
+      _typeQualifiedName: NodoDialogo, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: salidas 0
+        node: {fileID: 6464152187387332382}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: salidas
+      _node: {fileID: -6225263978047705348}
+      _typeQualifiedName: NodoDialogo[], Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: salidas 0
+      _node: {fileID: -6225263978047705348}
+      _typeQualifiedName: NodoDialogo, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: entrada
+        node: {fileID: -8570030295116723384}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 1
+    - _fieldName: salidas 1
+      _node: {fileID: -6225263978047705348}
+      _typeQualifiedName: NodoDialogo, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 1
+  entrada: {fileID: 0}
+  textoNPC: "Se le ofrece algo mas se\xF1or?"
+  opciones:
+  - textoJugador: De echo si
+    terminarDialogo: 0
+    condicion: 
+    valorEsperado: 
+    cambiarRelacion: 0
+    condiciones: []
+  - textoJugador: No solo era eso
+    terminarDialogo: 1
+    condicion: 
+    valorEsperado: 
+    cambiarRelacion: 0
+    condiciones: []
+  salidas:
+  - {fileID: 0}
+  - {fileID: 0}
+--- !u!114 &-2949252562109097120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22df4fbdc2642ae4a900c9b3ecccf06b, type: 3}
+  m_Name: Nodo Dialogo
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: -328, y: -120}
+  ports:
+    keys:
+    - entrada
+    - salidas
+    - salidas 0
+    - salidas 1
+    - salidas 2
+    values:
+    - _fieldName: entrada
+      _node: {fileID: -2949252562109097120}
+      _typeQualifiedName: NodoDialogo, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: salidas
+      _node: {fileID: -2949252562109097120}
+      _typeQualifiedName: NodoDialogo[], Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: salidas 0
+      _node: {fileID: -2949252562109097120}
+      _typeQualifiedName: NodoDialogo, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: entrada
+        node: {fileID: 6464152187387332382}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 1
+    - _fieldName: salidas 1
+      _node: {fileID: -2949252562109097120}
+      _typeQualifiedName: NodoDialogo, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: entrada
+        node: {fileID: -7941812877147651718}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 1
+    - _fieldName: salidas 2
+      _node: {fileID: -2949252562109097120}
+      _typeQualifiedName: NodoDialogo, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: entrada
+        node: {fileID: 7840334867086996584}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 1
+  entrada: {fileID: 0}
+  textoNPC: "Se\xF1oria, nesecita algo?"
+  opciones:
+  - textoJugador: "\xBFQue llevas encima?"
+    terminarDialogo: 0
+    condicion: 
+    valorEsperado: 
+    cambiarRelacion: 0
+    condiciones: []
+  - textoJugador: como va el negocio
+    terminarDialogo: 0
+    condicion: 
+    valorEsperado: 
+    cambiarRelacion: 0
+    condiciones:
+    - clave: 
+      valorEsperado: 0
+  - textoJugador: Como va nuestra relacion
+    terminarDialogo: 0
+    condicion: 
+    valorEsperado: 
+    cambiarRelacion: 0
+    condiciones: []
+  - textoJugador: no nada
+    terminarDialogo: 1
+    condicion: 
+    valorEsperado: 
+    cambiarRelacion: 0
+    condiciones: []
+  salidas:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc2dc05258981bc44838cd3e4e0f289e, type: 3}
+  m_Name: PanaderoSimple
+  m_EditorClassIdentifier: 
+  nodes:
+  - {fileID: -2949252562109097120}
+  - {fileID: 6464152187387332382}
+  - {fileID: -6225263978047705348}
+  - {fileID: -7941812877147651718}
+  - {fileID: 7840334867086996584}
+  - {fileID: -8570030295116723384}
+--- !u!114 &6464152187387332382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22df4fbdc2642ae4a900c9b3ecccf06b, type: 3}
+  m_Name: Nodo Dialogo
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 392, y: 104}
+  ports:
+    keys:
+    - entrada
+    - salidas
+    - salidas 0
+    values:
+    - _fieldName: entrada
+      _node: {fileID: 6464152187387332382}
+      _typeQualifiedName: NodoDialogo, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: salidas 0
+        node: {fileID: -2949252562109097120}
+        reroutePoints: []
+      - fieldName: salidas 0
+        node: {fileID: -8570030295116723384}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: salidas
+      _node: {fileID: 6464152187387332382}
+      _typeQualifiedName: NodoDialogo[], Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: salidas 0
+      _node: {fileID: 6464152187387332382}
+      _typeQualifiedName: NodoDialogo, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: entrada
+        node: {fileID: -6225263978047705348}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 1
+  entrada: {fileID: 0}
+  textoNPC: 'Estoy llevando: {pan}  pan'
+  opciones:
+  - textoJugador: Gracias eso queria saber
+    terminarDialogo: 0
+    condicion: 
+    valorEsperado: 
+    cambiarRelacion: 0
+    condiciones: []
+  salidas:
+  - {fileID: 0}
+--- !u!114 &7840334867086996584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22df4fbdc2642ae4a900c9b3ecccf06b, type: 3}
+  m_Name: Nodo Dialogo
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 408, y: 1048}
+  ports:
+    keys:
+    - entrada
+    - salidas
+    - salidas 0
+    values:
+    - _fieldName: entrada
+      _node: {fileID: 7840334867086996584}
+      _typeQualifiedName: NodoDialogo, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: salidas 2
+        node: {fileID: -2949252562109097120}
+        reroutePoints: []
+      - fieldName: salidas 2
+        node: {fileID: -8570030295116723384}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: salidas
+      _node: {fileID: 7840334867086996584}
+      _typeQualifiedName: NodoDialogo[], Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: salidas 0
+      _node: {fileID: 7840334867086996584}
+      _typeQualifiedName: NodoDialogo, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: entrada
+        node: {fileID: -8570030295116723384}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 1
+  entrada: {fileID: 0}
+  textoNPC: Estamos bien
+  opciones:
+  - textoJugador: quiero prenguntar mas cosas
+    terminarDialogo: 0
+    condicion: 
+    valorEsperado: 
+    cambiarRelacion: 0
+    condiciones: []
+  - textoJugador: bien, me voy
+    terminarDialogo: 0
+    condicion: 
+    valorEsperado: 
+    cambiarRelacion: 0
+    condiciones: []
+  salidas:
+  - {fileID: 0}

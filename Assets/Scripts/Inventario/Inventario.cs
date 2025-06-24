@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using System.Text;
+using TMPro;
 using UnityEngine;
 
 public class Inventario : MonoBehaviour
@@ -6,12 +8,23 @@ public class Inventario : MonoBehaviour
 	[SerializeField] private ItemDB itemDb;
 	[SerializeField] private List<ItemCantidad> inventario = new List<ItemCantidad>();
 
+	[Header("Referencias")]
+	[SerializeField] private GameObject panelInventario;
+	[SerializeField] private TextMeshProUGUI itemCantidadText;
+	public Inventario actualInv;
+
 	private void Awake()
 	{
 		if (itemDb != null)
 			InicializarDesdeBaseDeDatos(itemDb);
 
 		itemDb = ItemDB.Instancia.itemDataBase; // Asigna la base de datos de items desde el singleton
+	}
+
+	private void Start()
+	{
+		panelInventario = ReferenciasGlobales.Instancia.panelInventario;
+		itemCantidadText = ReferenciasGlobales.Instancia.itemCantidadText;
 	}
 
 	// Agrega una cantidad de un item al inventario. Si el item ya existe, suma la cantidad; si no, lo añade.
@@ -49,8 +62,34 @@ public class Inventario : MonoBehaviour
 		return existente != null ? existente.cantidad : 0;
 	}
 
-	// Muestra el inventario actual en la consola (para pruebas).
 	public void MostrarInventario()
+	{
+		if (itemCantidadText == null)
+		{
+			Debug.LogError("[InventarioUI] TextMeshPro no asignado.");
+			return;
+		}
+
+		// Usar StringBuilder para construir el texto de manera eficiente
+		StringBuilder sb = new StringBuilder();
+
+		// Filtrar y agregar ítems con cantidad > 1
+		foreach (ItemCantidad ic in inventario)
+		{
+			if (ic.cantidad > 1) // Solo mostrar ítems con cantidad > 1
+			{
+				sb.AppendLine($"- {ic.item.nombreItem}: {ic.cantidad}");
+			}
+		}
+
+		// Asignar el texto generado al componente TextMeshPro
+		itemCantidadText.text = sb.ToString();
+
+		Debug.Log("[InventarioUI] Inventario actualizado en la interfaz.");
+	}
+
+	// Muestra el inventario actual en la consola (para pruebas).
+	public void ImprimirInventario()
 	{
 		Debug.Log($"Inventario de {gameObject.name}:");
 		foreach (ItemCantidad ic in inventario)

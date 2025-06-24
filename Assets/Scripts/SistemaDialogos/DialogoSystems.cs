@@ -17,8 +17,12 @@ public class DialogoSystems : MonoBehaviour
 
 	public GrafoDialogo grafoActual;
 	private NodoDialogo nodoActual;
-	private LineaDialogo lineaActual;
 	private Dictionary<string, bool> worldState = new();
+
+	public Inventario currentInventario;
+
+	// Cachear referencias a items para uso en diálogo
+	private ItemData madera, harina, pan, hierro;
 
 	private void Awake()
 	{
@@ -26,6 +30,12 @@ public class DialogoSystems : MonoBehaviour
 		else Destroy(gameObject);
 
 		dialoguePanel.SetActive(false);
+
+		// Cachear referencias a ítems para no hacer llamadas repetidas
+		pan = ItemDB.Instancia.ObtenerItemPorNombre("Pan");
+		harina = ItemDB.Instancia.ObtenerItemPorNombre("Harina");
+		madera = ItemDB.Instancia.ObtenerItemPorNombre("Madera");
+		hierro = ItemDB.Instancia.ObtenerItemPorNombre("Hierro");
 	}
 
 	public void IniciarDialogoDesdeGrafo(GrafoDialogo grafo)
@@ -51,7 +61,9 @@ public class DialogoSystems : MonoBehaviour
 	{
 		nodoActual = nodo;
 		dialoguePanel.SetActive(true);
-		dialogueText.text = nodo.textoNPC;
+
+		// Reemplazamos variables dinámicas en el texto antes de mostrarlo
+		dialogueText.text = ReemplazarVariables(nodo.textoNPC);
 
 		Cursor.lockState = CursorLockMode.None;
 		Cursor.visible = true;
@@ -61,39 +73,15 @@ public class DialogoSystems : MonoBehaviour
 		for (int i = 0; i < nodo.opciones.Length; i++)
 		{
 			var opcion = nodo.opciones[i];
+
+			if (!CumpleCondiciones(opcion.condiciones))
+				continue;
+
 			GameObject nuevoBoton = Instantiate(botonPrefab, contenedorBotones);
 			nuevoBoton.GetComponentInChildren<TextMeshProUGUI>().text = opcion.textoJugador;
 
 			int index = i;
 			nuevoBoton.GetComponent<Button>().onClick.AddListener(() => ElegirOpcion(index));
-		}
-	}
-
-	void ShowLine(LineaDialogo line)
-	{
-		lineaActual = line;
-		dialogueText.text = line.npcText;
-
-		LimpiarOpciones();
-
-		for (int i = 0; i < line.opciones.Length; i++)
-		{
-			var option = line.opciones[i];
-
-			bool show = true;
-			if (!string.IsNullOrEmpty(option.llaveCondicion))
-			{
-				show = worldState.TryGetValue(option.llaveCondicion, out bool value) && value == option.requiredValue;
-			}
-
-			if (show)
-			{
-				GameObject nuevoBoton = Instantiate(botonPrefab, contenedorBotones);
-				nuevoBoton.GetComponentInChildren<TextMeshProUGUI>().text = option.textoJugador;
-
-				int index = i;
-				nuevoBoton.GetComponent<Button>().onClick.AddListener(() => SelectOption(index));
-			}
 		}
 	}
 
@@ -107,8 +95,7 @@ public class DialogoSystems : MonoBehaviour
 	{
 		var opcion = nodoActual.opciones[index];
 
-		if (opcion.cambiarRelacion != 0)
-			Debug.Log($"Relación modificada en {opcion.cambiarRelacion}");
+		// Aquí se pueden aplicar efectos si existieran
 
 		if (opcion.terminarDialogo)
 		{
@@ -124,22 +111,21 @@ public class DialogoSystems : MonoBehaviour
 			EndDialogue();
 	}
 
-	void SelectOption(int index)
-	{
-		var selected = lineaActual.opciones[index];
-
-		foreach (var efecto in selected.efectos)
-			efecto?.EjecutarEfecto(null, null); // Por ahora null
-
-		if (selected.terminarDialogo || selected.siguienteLinea == null)
-			EndDialogue();
-		else
-			ShowLine(selected.siguienteLinea);
-	}
-
 	public void SetWorldState(string key, bool value)
 	{
 		worldState[key] = value;
+	}
+
+	bool CumpleCondiciones(CondicionDialogo[] condiciones)
+	{
+		if (condiciones == null || condiciones.Length == 0) return true;
+
+		foreach (var cond in condiciones)
+		{
+			if (!worldState.TryGetValue(cond.clave, out bool valor) || valor != cond.valorEsperado)
+				return false;
+		}
+		return true;
 	}
 
 	void EndDialogue()
@@ -148,7 +134,36 @@ public class DialogoSystems : MonoBehaviour
 		Cursor.visible = false;
 
 		dialoguePanel.SetActive(false);
-		lineaActual = null;
 		LimpiarOpciones();
+		nodoActual = null;
+	}
+
+	// Método que reemplaza etiquetas de texto por cantidades dinámicas del inventario actual del NPC
+	string ReemplazarVariables(string texto)
+	{
+		if (currentInventario == null)
+			return texto;
+
+		texto = texto.Replace("{madera}", currentInventario.ObtenerCantidad(madera).ToString());
+		texto = texto.Replace("{harina}", currentInventario.ObtenerCantidad(harina).ToString());
+		texto = texto.Replace("{pan}", currentInventario.ObtenerCantidad(pan).ToString());
+		texto = texto.Replace("{hierro}", currentInventario.ObtenerCantidad(hierro).ToString());
+
+		return texto;
+	}
+
+	private void OnEnable()
+	{
+		EventManager.AddListener<Inventario>("EntregarRecursoRepartidor", RecibirInventario);
+	}
+
+	private void OnDisable()
+	{
+		EventManager.RemoveListener<Inventario>("EntregarRecursoRepartidor", RecibirInventario);
+	}
+
+	public void RecibirInventario(Inventario inv)
+	{
+		currentInventario = inv;
 	}
 }
