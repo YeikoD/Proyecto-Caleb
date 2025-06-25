@@ -21,12 +21,6 @@ public class Inventario : MonoBehaviour
 		itemDb = ItemDB.Instancia.itemDataBase; // Asigna la base de datos de items desde el singleton
 	}
 
-	private void Start()
-	{
-		panelInventario = ReferenciasGlobales.Instancia.panelInventario;
-		itemCantidadText = ReferenciasGlobales.Instancia.itemCantidadText;
-	}
-
 	public List<ItemCantidad> ObtenerTodos()
 	{
 		return new List<ItemCantidad>(inventario); // Devuelve una copia para evitar modificaciones externas
