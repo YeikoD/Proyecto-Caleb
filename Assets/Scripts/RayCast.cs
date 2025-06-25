@@ -28,7 +28,7 @@ public class RayCast : MonoBehaviour
 			{
 				if (Input.GetKeyDown(KeyCode.E))
 				{
-					hit.collider.transform.GetComponent<NPCDeciciones>().IniciarDialogo();
+					//hit.collider.transform.GetComponent<NPCDeciciones>().IniciarDialogo();
 				}
 				hit.collider.transform.GetComponent<Inventario>().MostrarInventario();
 			}
