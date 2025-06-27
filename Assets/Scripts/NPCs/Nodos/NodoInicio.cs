@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[NodeTint("#6DB06C")]
 [CreateNodeMenu("IA/Global/Inicio")]
 public class NodoInicio : NodoIA
 {

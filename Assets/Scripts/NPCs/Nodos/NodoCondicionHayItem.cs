@@ -3,7 +3,7 @@ using UnityEngine;
 [CreateNodeMenu("IA/Condiciones/Verificar Item")]
 public class NodoCondicionHayItem : NodoCondicionIA
 {
-	public string idAlmacen = "ALMACEN-PANADERIA"; // ID en Referencias
+	public string idAlmacen = "almacen"; // ID en Referencias
 	public string idItem = "item";          // ID del ítem en ItemDB
 
 	public override NodoIA Ejecutar(NPC npc)

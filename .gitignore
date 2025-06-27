@@ -433,3 +433,4 @@ MemoryCaptures/
 /Assets/Scripts/NPC/NodoInicio.cs
 /Assets/Scripts/NPC/NPC.cs
 /Assets/Scripts/NPC/NPCMovimiento.cs
+/Assets/Scripts/NPCs/Nodos/Oficio/NodoCondicionHayItem.cs

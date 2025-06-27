@@ -3,7 +3,7 @@ using UnityEngine;
 [CreateNodeMenu("IA/Acciones/Tomar Item")]
 public class NodoAccionTomarItem : NodoAccionIA
 {
-	public string idAlmacen = "ALMACEN-PANADERIA";   // ID en Referencias
+	public string idAlmacen = "almacen";   // ID en Referencias
 	public string idItem = "item";                 // ID del item a tomar
 	public int cantidad = 1;                         // Cantidad a tomar
 

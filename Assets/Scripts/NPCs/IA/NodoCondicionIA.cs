@@ -1,5 +1,4 @@
-using XNode;
-
+[NodeTint("#0093db")]
 public abstract class NodoCondicionIA : NodoIA
 {
 	[Input(backingValue = ShowBackingValue.Never)] public NodoIA entrada;
