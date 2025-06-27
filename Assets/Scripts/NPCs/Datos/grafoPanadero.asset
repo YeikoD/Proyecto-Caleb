@@ -1,0 +1,634 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-4262863802182528605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 324a5244c8854c148bd41a3144c24e3f, type: 3}
+  m_Name: Nodo Mover A
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 680, y: 56}
+  ports:
+    keys:
+    - entrada
+    - salida
+    values:
+    - _fieldName: entrada
+      _node: {fileID: -4262863802182528605}
+      _typeQualifiedName: NodoIA, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: salida
+        node: {fileID: 4382066029294166454}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: salida
+      _node: {fileID: -4262863802182528605}
+      _typeQualifiedName: NodoIA, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: entrada
+        node: {fileID: -2464727286129427161}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  entrada: {fileID: 0}
+  salida: {fileID: 0}
+  idDestino: PANADERIA-CHILL
+--- !u!114 &-2464727286129427161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79667aca02ed736499e5bb2c187b6d4b, type: 3}
+  m_Name: Nodo Esperar
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 680, y: 168}
+  ports:
+    keys:
+    - entrada
+    - salida
+    values:
+    - _fieldName: entrada
+      _node: {fileID: -2464727286129427161}
+      _typeQualifiedName: NodoIA, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: salida
+        node: {fileID: -4262863802182528605}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: salida
+      _node: {fileID: -2464727286129427161}
+      _typeQualifiedName: NodoIA, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: entrada
+        node: {fileID: 6608354966406784987}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  entrada: {fileID: 0}
+  salida: {fileID: 0}
+  tiempoEspera: 5
+--- !u!114 &-1291720661968227459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79667aca02ed736499e5bb2c187b6d4b, type: 3}
+  m_Name: Nodo Esperar
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 1224, y: 296}
+  ports:
+    keys:
+    - entrada
+    - salida
+    values:
+    - _fieldName: entrada
+      _node: {fileID: -1291720661968227459}
+      _typeQualifiedName: NodoIA, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: salida
+        node: {fileID: 7699598852356616008}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: salida
+      _node: {fileID: -1291720661968227459}
+      _typeQualifiedName: NodoIA, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: entrada
+        node: {fileID: 196775052029411278}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  entrada: {fileID: 0}
+  salida: {fileID: 0}
+  tiempoEspera: 5
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d719560c1e88b80458c99d4bfe847d7d, type: 3}
+  m_Name: grafoPanadero
+  m_EditorClassIdentifier: 
+  nodes:
+  - {fileID: 4382066029294166454}
+  - {fileID: -4262863802182528605}
+  - {fileID: 6608354966406784987}
+  - {fileID: 7699598852356616008}
+  - {fileID: 196775052029411278}
+  - {fileID: 1679194391647637513}
+  - {fileID: -2464727286129427161}
+  - {fileID: -1291720661968227459}
+  - {fileID: 8173125787718818102}
+  - {fileID: 7467829471688259696}
+  - {fileID: 6957881587052861678}
+  - {fileID: 2409476972438650960}
+  - {fileID: 5444073005490094271}
+  nodoInicial: {fileID: 4382066029294166454}
+--- !u!114 &196775052029411278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d05aea82b28c6f4ea3ae3888257283a, type: 3}
+  m_Name: "Nodo Condicion Hay Le\xF1a"
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 1480, y: 232}
+  ports:
+    keys:
+    - entrada
+    - verdadero
+    - falso
+    values:
+    - _fieldName: entrada
+      _node: {fileID: 196775052029411278}
+      _typeQualifiedName: NodoIA, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: salida
+        node: {fileID: -1291720661968227459}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: verdadero
+      _node: {fileID: 196775052029411278}
+      _typeQualifiedName: NodoIA, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: entrada
+        node: {fileID: 7467829471688259696}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: falso
+      _node: {fileID: 196775052029411278}
+      _typeQualifiedName: NodoIA, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: entrada
+        node: {fileID: 5444073005490094271}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  entrada: {fileID: 0}
+  verdadero: {fileID: 0}
+  falso: {fileID: 0}
+  idAlmacen: almacenPanaderia
+  idItem: madera
+--- !u!114 &1679194391647637513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 324a5244c8854c148bd41a3144c24e3f, type: 3}
+  m_Name: Nodo Mover A
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 1224, y: 72}
+  ports:
+    keys:
+    - entrada
+    - salida
+    values:
+    - _fieldName: entrada
+      _node: {fileID: 1679194391647637513}
+      _typeQualifiedName: NodoIA, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: verdadero
+        node: {fileID: 6608354966406784987}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: salida
+      _node: {fileID: 1679194391647637513}
+      _typeQualifiedName: NodoIA, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: entrada
+        node: {fileID: 8173125787718818102}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  entrada: {fileID: 0}
+  salida: {fileID: 0}
+  idDestino: MESA-PANADERO
+--- !u!114 &2409476972438650960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79667aca02ed736499e5bb2c187b6d4b, type: 3}
+  m_Name: Nodo Esperar
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 1992, y: 376}
+  ports:
+    keys:
+    - entrada
+    - salida
+    values:
+    - _fieldName: entrada
+      _node: {fileID: 2409476972438650960}
+      _typeQualifiedName: NodoIA, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: salida
+        node: {fileID: 6957881587052861678}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: salida
+      _node: {fileID: 2409476972438650960}
+      _typeQualifiedName: NodoIA, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  entrada: {fileID: 0}
+  salida: {fileID: 0}
+  tiempoEspera: 5
+--- !u!114 &4382066029294166454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4d13653515b402469d623c90d223ae2, type: 3}
+  m_Name: Nodo Inicio
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 392, y: 136}
+  ports:
+    keys:
+    - salida
+    values:
+    - _fieldName: salida
+      _node: {fileID: 4382066029294166454}
+      _typeQualifiedName: NodoIA, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: entrada
+        node: {fileID: -4262863802182528605}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  salida: {fileID: 0}
+--- !u!114 &5444073005490094271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79667aca02ed736499e5bb2c187b6d4b, type: 3}
+  m_Name: Nodo Esperar
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 1736, y: 328}
+  ports:
+    keys:
+    - entrada
+    - salida
+    values:
+    - _fieldName: entrada
+      _node: {fileID: 5444073005490094271}
+      _typeQualifiedName: NodoIA, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: falso
+        node: {fileID: 196775052029411278}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: salida
+      _node: {fileID: 5444073005490094271}
+      _typeQualifiedName: NodoIA, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: entrada
+        node: {fileID: 6957881587052861678}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  entrada: {fileID: 0}
+  salida: {fileID: 0}
+  tiempoEspera: 5
+--- !u!114 &6608354966406784987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b42ab9a5d4c3fea4aa6bbbd2cf6ee2b0, type: 3}
+  m_Name: Nodo Condicion Horno Encendido
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 936, y: 104}
+  ports:
+    keys:
+    - entrada
+    - verdadero
+    - falso
+    values:
+    - _fieldName: entrada
+      _node: {fileID: 6608354966406784987}
+      _typeQualifiedName: NodoIA, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: salida
+        node: {fileID: -2464727286129427161}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: verdadero
+      _node: {fileID: 6608354966406784987}
+      _typeQualifiedName: NodoIA, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: entrada
+        node: {fileID: 1679194391647637513}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: falso
+      _node: {fileID: 6608354966406784987}
+      _typeQualifiedName: NodoIA, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: entrada
+        node: {fileID: 7699598852356616008}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  entrada: {fileID: 0}
+  verdadero: {fileID: 0}
+  falso: {fileID: 0}
+  idHorno: HORNO-PANADERIA
+--- !u!114 &6957881587052861678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 324a5244c8854c148bd41a3144c24e3f, type: 3}
+  m_Name: Nodo Mover A
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 1736, y: 440}
+  ports:
+    keys:
+    - entrada
+    - salida
+    values:
+    - _fieldName: entrada
+      _node: {fileID: 6957881587052861678}
+      _typeQualifiedName: NodoIA, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: salida
+        node: {fileID: 5444073005490094271}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: salida
+      _node: {fileID: 6957881587052861678}
+      _typeQualifiedName: NodoIA, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: entrada
+        node: {fileID: 2409476972438650960}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  entrada: {fileID: 0}
+  salida: {fileID: 0}
+  idDestino: SOLICITAR_ITEM
+--- !u!114 &7467829471688259696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28baa419c639d2a41a182acd8f1fadb0, type: 3}
+  m_Name: Nodo Accion Tomar Item
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 1736, y: 168}
+  ports:
+    keys:
+    - entrada
+    - salida
+    values:
+    - _fieldName: entrada
+      _node: {fileID: 7467829471688259696}
+      _typeQualifiedName: NodoIA, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: verdadero
+        node: {fileID: 196775052029411278}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: salida
+      _node: {fileID: 7467829471688259696}
+      _typeQualifiedName: NodoIA, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  entrada: {fileID: 0}
+  salida: {fileID: 0}
+  idAlmacen: almacenPanaderia
+  idItem: madera
+  cantidad: 1
+--- !u!114 &7699598852356616008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 324a5244c8854c148bd41a3144c24e3f, type: 3}
+  m_Name: Nodo Mover A
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 1224, y: 184}
+  ports:
+    keys:
+    - entrada
+    - salida
+    values:
+    - _fieldName: entrada
+      _node: {fileID: 7699598852356616008}
+      _typeQualifiedName: NodoIA, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: falso
+        node: {fileID: 6608354966406784987}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: salida
+      _node: {fileID: 7699598852356616008}
+      _typeQualifiedName: NodoIA, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: entrada
+        node: {fileID: -1291720661968227459}
+        reroutePoints: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  entrada: {fileID: 0}
+  salida: {fileID: 0}
+  idDestino: ALMACEN-PANADERIA
+--- !u!114 &8173125787718818102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79667aca02ed736499e5bb2c187b6d4b, type: 3}
+  m_Name: Nodo Esperar
+  m_EditorClassIdentifier: 
+  graph: {fileID: 11400000}
+  position: {x: 1224, y: -40}
+  ports:
+    keys:
+    - entrada
+    - salida
+    values:
+    - _fieldName: entrada
+      _node: {fileID: 8173125787718818102}
+      _typeQualifiedName: NodoIA, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections:
+      - fieldName: salida
+        node: {fileID: 1679194391647637513}
+        reroutePoints: []
+      _direction: 0
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+    - _fieldName: salida
+      _node: {fileID: 8173125787718818102}
+      _typeQualifiedName: NodoIA, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+      connections: []
+      _direction: 1
+      _connectionType: 0
+      _typeConstraint: 0
+      _dynamic: 0
+  entrada: {fileID: 0}
+  salida: {fileID: 0}
+  tiempoEspera: 5
