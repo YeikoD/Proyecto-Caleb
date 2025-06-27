@@ -18,7 +18,7 @@ public class Inventario : MonoBehaviour
 		if (itemDb != null)
 			InicializarDesdeBaseDeDatos(itemDb);
 
-		itemDb = ItemDB.Instancia.itemDataBase; // Asigna la base de datos de items desde el singleton
+		//itemDb = ItemDB.Instancia.itemDataBase; // Asigna la base de datos de items desde el singleton
 	}
 
 	public List<ItemCantidad> ObtenerTodos()
