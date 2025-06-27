@@ -416,3 +416,20 @@ MemoryCaptures/
 /Assets/Scripts/ReferenciasGlobales.cs
 /Assets/Scripts/EventoSys/EventManager.cs
 /Assets/Scripts/NPC/NuevoGrafoIA.asset
+/Assets/Scripts/NPC/Nodos/Hambre Nodos/NodoAccionComer.cs
+/Assets/Scripts/NPC/Nodos/Trabajo/NodoAccionEjecutarTarea.cs
+/Assets/Scripts/NPC/Nodos/Trabajo/NodoAccionIrATrabajo.cs
+/Assets/Scripts/NPC/Nodos/Trabajo/NodoFinalizarTrabajo.cs
+/Assets/Scripts/NPC/Nodos/Trabajo/NodoCondicionTieneTarea.cs
+/Assets/Scripts/NPC/Nodos/NocoCondicionEmergencia.cs
+/Assets/Scripts/NPC/Nodos/NodoAccionIdle.cs
+/Assets/Scripts/NPC/Nodos/NodoCondicionCansancio.cs
+/Assets/Scripts/NPC/Nodos/NodoCondicionHambre.cs
+/Assets/Scripts/NPC/Nodos/NodoCondicionSocial.cs
+/Assets/Scripts/NPC/Nodos/NodoCondicionTareaAsignada.cs
+/Assets/Scripts/NPC/ControladorNPC.cs
+/Assets/Scripts/NPC/GrafoIA.cs
+/Assets/Scripts/NPC/NodoIA.cs
+/Assets/Scripts/NPC/NodoInicio.cs
+/Assets/Scripts/NPC/NPC.cs
+/Assets/Scripts/NPC/NPCMovimiento.cs
