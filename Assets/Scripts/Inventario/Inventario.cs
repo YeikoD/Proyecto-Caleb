@@ -3,6 +3,10 @@ using System.Text;
 using TMPro;
 using UnityEngine;
 
+// ======================================================== //	
+// ======================= INVENTARIO ===================== //
+// ======================================================== //
+
 public class Inventario : MonoBehaviour
 {
 	[SerializeField] private ItemDB itemDb;
@@ -15,8 +19,8 @@ public class Inventario : MonoBehaviour
 
 	private void Awake()
 	{
-		if (itemDb != null)
-			InicializarDesdeBaseDeDatos(itemDb);
+		/*if (itemDb != null)
+			InicializarDesdeBaseDeDatos(itemDb);*/
 
 		//itemDb = ItemDB.Instancia.itemDataBase; // Asigna la base de datos de items desde el singleton
 	}
@@ -98,12 +102,12 @@ public class Inventario : MonoBehaviour
 	}
 
 	// Inicializa el inventario con todos los items de una base de datos, en cantidad cero.
-	public void InicializarDesdeBaseDeDatos(ItemDB bd)
+	/*public void InicializarDesdeBaseDeDatos(ItemDB bd)
 	{
 		//inventario.Clear();
 		foreach (var item in bd.todosLosItems)
 		{
 			inventario.Add(new ItemCantidad(item, 0));
 		}
-	}
+	}*/
 }

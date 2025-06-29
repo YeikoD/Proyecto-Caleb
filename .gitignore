@@ -434,3 +434,4 @@ MemoryCaptures/
 /Assets/Scripts/NPC/NPC.cs
 /Assets/Scripts/NPC/NPCMovimiento.cs
 /Assets/Scripts/NPCs/Nodos/Oficio/NodoCondicionHayItem.cs
+/Assets/Prefabs/NPC_Default.prefab
